@@ -1,70 +1,134 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="style.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+  <script src="https://accounts.google.com/gsi/client" async></script>
   <title>Login</title>
+  <style>
+    .gradient-custom {
+      background: linear-gradient(135deg, #081936, #1a3a6a);
+    }
+    .card {
+      background-color: #383838;
+      border: none;
+      border-radius: 1rem;
+    }
+    .login-title {
+      margin-bottom: 2rem;
+    }
+    .form-input-container {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+    .google-btn-container {
+      margin: 2rem 0;
+    }
+    .alternative-option {
+      margin-top: 1.5rem;
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 1.5rem 0;
+      color: #aaa;
+    }
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #555;
+    }
+    .divider-text {
+      padding: 0 1rem;
+    }
+    .btn-custom {
+      background-color: #081936;
+      border: none;
+      width: 100%;
+      padding: 0.75rem;
+    }
+  </style>
 </head>
-
-<body>
-  <section class="vh-100 gradient-custom">
+<body class="gradient-custom">
+  <section class="vh-100">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card text-white" style="border-radius: 1rem; background-color: #383838;">
+          <div class="card text-white">
             <div class="card-body p-5 text-center">
-
               <div class="mb-md-5 mt-md-4 pb-5">
+                <h2 class="fw-bold mb-4 text-uppercase login-title">Entrar</h2>
 
-                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                <!-- Formulário de Login com Email/Senha -->
+                <form id="loginForm">
+                  <div class="form-input-container">
+                    <label class="form-label" for="loginEmail">E-mail</label>
+                    <input type="email" id="loginEmail" class="form-control form-control-lg" required>
+                  </div>
 
-                <div class="form-input-container">
-                  <label class="form-label" for="typeEmailX">Email</label>
-                  <input type="email" id="typeEmailX" class="form-control form-control-lg" />
+                  <div class="form-input-container">
+                    <label class="form-label" for="loginPassword">Senha</label>
+                    <input type="password" id="loginPassword" class="form-control form-control-lg" required>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-lg btn-custom">Entrar</button>
+                </form>
+
+                <!-- Divisor -->
+                <div class="divider">
+                  <span class="divider-text">OU</span>
                 </div>
 
-
-                <div class="form-input-container">
-                  <label class="form-label" for="typePasswordX">Password</label>
-                  <input type="password" id="typePasswordX" class="form-control form-control-lg" />
-
+                <!-- Botão do Google -->
+                <div class="google-btn-container">
+                  <div id="g_id_onload"
+                    data-client_id="136746120396-0bq4s4jn00d9ieocse04vp1b7o1eldnf.apps.googleusercontent.com"
+                    data-login_uri="https://accounts.google.com/o/oauth2/v2/auth"
+                    data-auto_prompt="false">
+                  </div>
+                  <div class="g_id_signin"
+                    data-type="standard"
+                    data-size="large"
+                    data-theme="outline"
+                    data-text="sign_in_with"
+                    data-shape="rectangular"
+                    data-logo_alignment="left">
+                  </div>
                 </div>
 
-                <button type="button" class="btn btn-primary btn-lg btn-block"
-                  style="background-color: #081936; border: none;">Login</button>
-
-                <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                  <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
-                  <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-                  <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                <div class="alternative-option">
+                  <p>Não tem uma conta? <a href="cadastro.html" class="text-white-50 fw-bold">Cadastre-se</a></p>
                 </div>
-
               </div>
-
-              <div>
-                <p class="mb-0">Não tem uma conta? <a href="cadastro.html" class="text-white-50 fw-bold">Inscrever-se</a>
-                </p>
-              </div>
-
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-</body>
 
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+  
+  <!-- Script para validação do formulário -->
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      
+      // Aqui você pode adicionar a lógica de autenticação
+      console.log('Tentativa de login com:', email, password);
+      alert('Login com email/senha seria processado aqui');
+      
+      // Redirecionamento ou tratamento da autenticação
+      // window.location.href = 'pagina-inicial.html';
+    });
+  </script>
+</body>
 </html>
